@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Craft Nook — Handmade Goods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAF7F2;
+      --warm: #F2EBE0;
+      --terracotta: #C4714A;
+      --terracotta-light: #F0D9CC;
+      --sage-light: #D8EAE0;
+      --ink: #2A2420;
+      --muted: #7A6F67;
+      --border: rgba(42,36,32,0.12);
+    }
+    body { background: var(--cream); font-family: 'DM Sans', sans-serif; color: var(--ink); }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* ── Top bar ── */
+    .topbar { background: var(--ink); color: rgba(250,247,242,0.75); text-align: center; font-size: 12px; letter-spacing: 0.08em; padding: 8px; font-weight: 300; }
+
+    /* ── Header ── */
+    .header { background: var(--cream); border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--terracotta); }
+    .logo span { color: var(--ink); font-weight: 400; font-size: 11px; display: block; letter-spacing: 0.18em; font-family: 'DM Sans', sans-serif; }
+    .nav { display: flex; gap: 24px; font-size: 13px; color: var(--muted); }
+    .nav a { text-decoration: none; color: inherit; cursor: pointer; transition: color 0.15s; }
+    .nav a:hover { color: var(--terracotta); }
+    .header-right { display: flex; gap: 10px; align-items: center; }
+    .manage-btn { background: var(--warm); color: var(--ink); border: 1px solid var(--border); padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; display: flex; align-items: center; gap: 5px; }
+    .manage-btn:hover { background: var(--terracotta-light); }
+    .cart-btn { background: var(--terracotta); color: white; border: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; cursor: pointer; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 6px; transition: background 0.2s; }
+    .cart-btn:hover { background: #a85c39; }
+    .cart-badge { background: white; color: var(--terracotta); border-radius: 50%; width: 18px; height: 18px; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+
+    /* ── Hero ── */
+    .hero { background: var(--warm); padding: 60px 32px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .hero-text { flex: 1; max-width: 500px; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; color: var(--terracotta); text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: 42px; line-height: 1.15; margin-bottom: 16px; }
+    .hero p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; font-weight: 300; }
+    .hero-cta { background: var(--terracotta); color: white; border: none; padding: 14px 28px; border-radius: 4px; font-size: 14px; cursor: pointer; font-family: 'DM Sans', sans-serif; letter-spacing: 0.04em; transition: background 0.2s; }
+    .hero-cta:hover { background: #a85c39; }
+    .hero-decor { flex: 0 0 220px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: center; align-self: center; }
+    .decor-block { border-radius: 8px; height: 90px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+    .decor-block:nth-child(1) { background: var(--terracotta-light); }
+    .decor-block:nth-child(2) { background: var(--sage-light); }
+    .decor-block:nth-child(3) { background: #EDE8F0; }
+    .decor-block:nth-child(4) { background: #E8DDD0; }
+
+    /* ── Shop section ── */
+    .section { padding: 48px 32px; }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; }
+    .section-header h2 { font-size: 26px; }
+
+    /* ── Category pills ── */
+    .categories { display: flex; gap: 10px; margin-bottom: 28px; overflow-x: auto; padding-bottom: 4px; }
+    .cat-pill { flex: 0 0 auto; padding: 7px 18px; border-radius: 20px; font-size: 13px; cursor: pointer; border: 1px solid var(--border); background: white; color: var(--muted); transition: all 0.15s; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
+    .cat-pill.active { background: var(--terracotta); color: white; border-color: var(--terracotta); }
+    .cat-pill:hover:not(.active) { border-color: var(--terracotta); color: var(--terracotta); }
+
+    /* ── Product grid ── */
+    .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+    .product-card { background: white; border-radius: 10px; border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(42,36,32,0.10); }
+    .product-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+    .product-info { padding: 14px 16px 16px; }
+    .product-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .product-name { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 4px; }
+    .product-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; font-weight: 300; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-size: 18px; font-weight: 500; color: var(--terracotta); }
+    .add-btn { background: var(--terracotta-light); color: var(--terracotta); border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; font-family: 'DM Sans', sans-serif; line-height: 1; }
+    .add-btn:hover { background: var(--terracotta); color: white; }
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 48px 0; color: var(--muted); font-size: 14px; }
+
+    /* ── Features band ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0 32px; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; background: var(--warm); padding: 40px 32px; }
+    .feature { text-align: center; }
+    .feature-icon { font-size: 26px; margin-bottom: 10px; }
+    .feature-title { font-family: 'Playfair Display', serif; font-size: 15px; margin-bottom: 6px; }
+    .feature-text { font-size: 13px; color: var(--muted); line-height: 1.5; font-weight: 300; }
+
+    /* ── Footer ── */
+    footer { background: var(--ink); color: rgba(250,247,242,0.55); text-align: center; padding: 24px 32px; font-size: 12px; letter-spacing: 0.04em; }
+    footer span { color: var(--terracotta-light); }
+
+    /* ── Shared overlay ── */
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 150; display: none; }
+    .overlay.show { display: block; }
+
+    /* ── Cart panel ── */
+    .cart-panel { position: fixed; right: 0; top: 0; bottom: 0; width: 360px; background: var(--cream); border-left: 1px solid var(--border); z-index: 200; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.3s ease; box-shadow: -4px 0 24px rgba(0,0,0,0.08); }
+    .cart-panel.open { transform: translateX(0); }
+    .cart-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .cart-header h2 { font-size: 20px; }
+    .close-btn { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--muted); }
+    .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+    .cart-empty { text-align: center; color: var(--muted); padding: 40px 0; font-size: 14px; }
+    .cart-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: center; }
+    .cart-item-icon { width: 48px; height: 48px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex: 0 0 auto; }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+    .cart-item-price { font-size: 13px; color: var(--terracotta); }
+    .qty-ctrl { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+    .qty-btn { background: var(--warm); border: none; width: 24px; height: 24px; border-radius: 4px; cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; color: var(--ink); font-family: 'DM Sans', sans-serif; }
+    .qty-num { font-size: 13px; min-width: 20px; text-align: center; }
+    .remove-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 16px; padding: 4px; }
+    .cart-footer { padding: 20px 24px; border-top: 1px solid var(--border); }
+    .cart-total { display: flex; justify-content: space-between; font-size: 16px; margin-bottom: 16px; }
+    .cart-total span:last-child { font-weight: 500; color: var(--terracotta); }
+    .checkout-btn { width: 100%; background: var(--terracotta); color: white; border: none; padding: 14px; border-radius: 6px; font-size: 15px; cursor: pointer; font-family: 'DM Sans', sans-serif; letter-spacing: 0.04em; transition: background 0.2s; }
+    .checkout-btn:hover { background: #a85c39; }
+
+    /* ── Toast ── */
+    .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--ink); color: white; padding: 10px 20px; border-radius: 20px; font-size: 13px; z-index: 500; transition: transform 0.3s ease; white-space: nowrap; pointer-events: none; }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── Modals (shared) ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 400; display: none; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--cream); border-radius: 12px; padding: 36px 32px; max-width: 420px; width: 90%; text-align: center; }
+    .modal h2 { font-size: 24px; margin-bottom: 10px; }
+    .modal p { font-size: 14px; color: var(--muted); margin-bottom: 24px; font-weight: 300; line-height: 1.6; }
+    .modal-close { background: var(--terracotta); color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-size: 14px; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
+    .modal-close:hover { background: #a85c39; }
+
+    /* ── Login modal ── */
+    .login-modal { max-width: 360px; text-align: left; }
+    .login-modal h2 { text-align: center; margin-bottom: 6px; }
+    .login-modal .login-sub { text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 24px; font-weight: 300; }
+    .login-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .login-field label { font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+    .login-field input { padding: 10px 14px; border: 1px solid var(--border); border-radius: 7px; font-family: 'DM Sans', sans-serif; font-size: 14px; background: white; color: var(--ink); outline: none; }
+    .login-field input:focus { border-color: var(--terracotta); }
+    .login-error { font-size: 12px; color: #c0392b; background: #fde8e8; border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; display: none; }
+    .login-error.show { display: block; }
+    .login-submit { width: 100%; background: var(--terracotta); color: white; border: none; padding: 12px; border-radius: 7px; font-size: 14px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; margin-top: 4px; }
+    .login-submit:hover { background: #a85c39; }
+    .login-cancel { width: 100%; background: none; color: var(--muted); border: 1px solid var(--border); padding: 10px; border-radius: 7px; font-size: 13px; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 8px; transition: background 0.15s; }
+    .login-cancel:hover { background: var(--warm); }
+
+    /* ── Manage panel ── */
+    .manage-panel { position: fixed; left: 0; top: 0; bottom: 0; width: 500px; background: var(--cream); border-right: 1px solid var(--border); z-index: 200; display: flex; flex-direction: column; transform: translateX(-100%); transition: transform 0.3s ease; box-shadow: 4px 0 24px rgba(0,0,0,0.08); }
+    .manage-panel.open { transform: translateX(0); }
+    .manage-header { padding: 16px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; gap: 12px; }
+    .manage-header h2 { font-size: 19px; flex: 1; }
+    .manage-header-actions { display: flex; gap: 8px; align-items: center; }
+    .manage-tabs { display: flex; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+    .manage-tab { flex: 1; padding: 12px; background: none; border: none; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; transition: all 0.15s; margin-bottom: -1px; }
+    .manage-tab.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+    .manage-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+
+    /* JSON toolbar */
+    .json-bar { display: flex; gap: 8px; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin-bottom: 20px; align-items: center; }
+    .json-bar-label { font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); flex: 1; }
+    .json-btn { padding: 6px 14px; border-radius: 6px; font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+    .json-btn-export { background: var(--warm); color: var(--ink); border: 1px solid var(--border); }
+    .json-btn-export:hover { background: var(--terracotta-light); }
+    .json-btn-import { background: var(--terracotta); color: white; border: none; }
+    .json-btn-import:hover { background: #a85c39; }
+    #json-file-input { display: none; }
+
+    /* manage — category tab */
+    .section-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; margin-top: 4px; display: block; }
+    .cat-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .cat-row { display: flex; align-items: center; gap: 10px; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; }
+    .cat-row-name { flex: 1; font-size: 14px; }
+    .cat-row-count { font-size: 12px; color: var(--muted); }
+    .cat-del-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; padding: 2px 6px; border-radius: 4px; transition: background 0.15s, color 0.15s; }
+    .cat-del-btn:hover { background: #fde8e8; color: #c0392b; }
+    .add-cat-row { display: flex; gap: 8px; }
+    .add-cat-row input { flex: 1; padding: 9px 14px; border: 1px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; background: white; color: var(--ink); outline: none; }
+    .add-cat-row input:focus { border-color: var(--terracotta); }
+    .add-cat-row button { background: var(--terracotta); color: white; border: none; padding: 9px 18px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .add-cat-row button:hover { background: #a85c39; }
+
+    /* manage — product tab */
+    .prod-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .prod-row { display: flex; align-items: center; gap: 10px; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; }
+    .prod-row-emoji { font-size: 22px; width: 32px; text-align: center; flex-shrink: 0; }
+    .prod-row-info { flex: 1; min-width: 0; }
+    .prod-row-name { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .prod-row-meta { font-size: 11px; color: var(--muted); }
+    .prod-del-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; padding: 2px 6px; border-radius: 4px; transition: background 0.15s, color 0.15s; flex-shrink: 0; }
+    .prod-del-btn:hover { background: #fde8e8; color: #c0392b; }
+
+    /* add product form */
+    .add-prod-form { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+    .add-prod-form h3 { font-size: 15px; margin-bottom: 2px; }
+    .form-row { display: flex; gap: 8px; }
+    .form-field { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+    .form-field label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .form-field input, .form-field select { padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; background: var(--cream); color: var(--ink); outline: none; width: 100%; }
+    .form-field input:focus, .form-field select:focus { border-color: var(--terracotta); }
+    .form-submit { background: var(--terracotta); color: white; border: none; padding: 11px; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: background 0.2s; margin-top: 2px; }
+    .form-submit:hover { background: #a85c39; }
+
+    /* logout button */
+    .logout-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 5px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+    .logout-btn:hover { border-color: #c0392b; color: #c0392b; background: #fde8e8; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .header { padding: 12px 16px; }
+      .nav { display: none; }
+      .hero { flex-direction: column; padding: 40px 16px; }
+      .hero h1 { font-size: 30px; }
+      .hero-decor { display: none; }
+      .section { padding: 32px 16px; }
+      .features { grid-template-columns: 1fr; padding: 32px 16px; }
+      .cart-panel, .manage-panel { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">Local pickup only · Message to reserve · Handmade with love 🏡</div>
+
+  <header class="header">
+    <div class="logo">The Craft Nook <span>HANDMADE GOODS</span></div>
+    <nav class="nav">
+      <a href="#shop">Shop</a>
+      <a href="#features">About</a>
+      <a href="#shop">Custom Orders</a>
+    </nav>
+    <div class="header-right">
+      <button class="manage-btn" onclick="openManageOrLogin()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 4h12M1 7h12M1 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Manage Shop
+      </button>
+      <button class="cart-btn" onclick="toggleCart()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2h2l2 8h6l1.5-5H5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="13" r="1" fill="white"/><circle cx="12" cy="13" r="1" fill="white"/></svg>
+        Cart <span class="cart-badge" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">New arrivals · Spring 2026</p>
+      <h1>Crafted by hand,<br>made with heart</h1>
+      <p>Every piece is individually made using traditional techniques and sustainable materials. Find something truly one of a kind.</p>
+      <button class="hero-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Browse the shop</button>
+    </div>
+    <div class="hero-decor">
+      <div class="decor-block">🧶</div>
+      <div class="decor-block">🕯️</div>
+      <div class="decor-block">🪵</div>
+      <div class="decor-block">🎨</div>
+    </div>
+  </section>
+
+  <section class="section" id="shop">
+    <div class="section-header"><h2>Our Collection</h2></div>
+    <div class="categories" id="categories"></div>
+    <div class="products"   id="products"></div>
+  </section>
+
+  <hr class="divider" />
+
+  <div class="features" id="features">
+    <div class="feature">
+      <div class="feature-icon">✂️</div>
+      <div class="feature-title">Handcrafted</div>
+      <div class="feature-text">Every item made by artisan hands, never mass-produced</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🌿</div>
+      <div class="feature-title">Sustainable</div>
+      <div class="feature-text">Natural materials, minimal packaging, low impact</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🏡</div>
+      <div class="feature-title">Local Pickup</div>
+      <div class="feature-text">Message to reserve, then pick up at my home — no shipping, no wait</div>
+    </div>
+  </div>
+
+  <footer>© 2026 <span>The Craft Nook</span> · All items handmade to order · Local pickup only · Message to reserve</footer>
+
+  <!-- Shared overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ── Cart panel ── -->
+  <div class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="close-btn" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"><div class="cart-empty">Your cart is empty</div></div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+      <div class="cart-total"><span>Total</span><span id="cart-total">$0.00</span></div>
+      <div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px;line-height:1.5;">🏡 Local pickup only · No shipping</div>
+      <button class="checkout-btn" onclick="checkout()">📬 Message to Reserve →</button>
+    </div>
+  </div>
+
+  <!-- ── Login modal ── -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal login-modal">
+      <div style="font-size:36px;text-align:center;margin-bottom:14px">🔒</div>
+      <h2>Shop Manager</h2>
+      <p class="login-sub">Enter your credentials to access the shop management panel.</p>
+      <div class="login-error" id="login-error">Incorrect username or password. Please try again.</div>
+      <div class="login-field">
+        <label>Username</label>
+        <input type="text" id="login-user" placeholder="admin" autocomplete="username"
+               onkeydown="if(event.key==='Enter')document.getElementById('login-pass').focus()" />
+      </div>
+      <div class="login-field">
+        <label>Password</label>
+        <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password"
+               onkeydown="if(event.key==='Enter')submitLogin()" />
+      </div>
+      <button class="login-submit" onclick="submitLogin()">Sign in</button>
+      <button class="login-cancel" onclick="closeLoginModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ── Manage panel ── -->
+  <div class="manage-panel" id="manage-panel">
+    <div class="manage-header">
+      <h2>Manage Shop</h2>
+      <div class="manage-header-actions">
+        <button class="logout-btn" onclick="logoutManage()">Sign out</button>
+        <button class="close-btn" onclick="toggleManage()">✕</button>
+      </div>
+    </div>
+    <div class="manage-tabs">
+      <button class="manage-tab active" id="tab-cats"  onclick="switchTab('cats')">Categories</button>
+      <button class="manage-tab"        id="tab-prods" onclick="switchTab('prods')">Products</button>
+      <button class="manage-tab"        id="tab-data"  onclick="switchTab('data')">Data</button>
+    </div>
+    <div class="manage-body">
+
+      <!-- Categories pane -->
+      <div id="pane-cats">
+        <span class="section-label">Active categories</span>
+        <div class="cat-list" id="cat-list"></div>
+        <span class="section-label">Add a new category</span>
+        <div class="add-cat-row">
+          <input type="text" id="new-cat-input" placeholder="e.g. Woodworking" maxlength="32"
+                 onkeydown="if(event.key==='Enter')addCategory()" />
+          <button onclick="addCategory()">Add category</button>
+        </div>
+      </div>
+
+      <!-- Products pane -->
+      <div id="pane-prods" style="display:none">
+        <span class="section-label">Current products</span>
+        <div class="prod-list" id="prod-list"></div>
+        <div class="add-prod-form">
+          <h3>Add a new product</h3>
+          <div class="form-row">
+            <div class="form-field" style="flex:2">
+              <label>Product name</label>
+              <input type="text" id="f-name" placeholder="Hand-carved wooden bowl" maxlength="48" />
+            </div>
+            <div class="form-field" style="flex:0 0 90px">
+              <label>Image</label>
+              <div id="f-img-preview" onclick="document.getElementById('f-img-input').click()" style="height:36px;border:1px dashed var(--border);border-radius:6px;background:var(--cream);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);overflow:hidden;">Upload</div>
+              <input type="file" id="f-img-input" accept="image/*" style="display:none" onchange="previewNewImage(event)" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Description</label>
+              <input type="text" id="f-desc" placeholder="Short description…" maxlength="64" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Category</label>
+              <select id="f-cat"></select>
+            </div>
+            <div class="form-field" style="flex:0 0 90px">
+              <label>Price ($)</label>
+              <input type="number" id="f-price" placeholder="0" min="1" max="9999" />
+            </div>
+            <div class="form-field" style="flex:0 0 70px">
+              <label>Card color</label>
+              <input type="color" id="f-color" value="#F0D9CC" style="height:36px;padding:2px 4px;cursor:pointer;" />
+            </div>
+          </div>
+          <button class="form-submit" onclick="addProduct()">Add product to shop</button>
+        </div>
+      </div>
+
+      <!-- Data pane -->
+      <div id="pane-data" style="display:none">
+
+        <span class="section-label">Export data</span>
+        <div style="background:white;border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:24px;">
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;font-weight:300;">
+            Download a <strong style="font-weight:500;color:var(--ink)">shop-data.json</strong> file containing all your current categories and products. Keep it as a backup or edit it externally and re-upload.
+          </p>
+          <button class="json-btn json-btn-export" style="width:100%;justify-content:center;padding:10px;" onclick="exportJSON()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M7 1v8M4 6l3 3 3-3M2 10v1a1 1 0 001 1h8a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download shop-data.json
+          </button>
+        </div>
+
+        <span class="section-label">Import data</span>
+        <div style="background:white;border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:24px;">
+          <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;font-weight:300;">
+            Upload a previously exported <strong style="font-weight:500;color:var(--ink)">shop-data.json</strong> to replace all current categories and products. This cannot be undone.
+          </p>
+          <input type="file" id="json-file-input" accept=".json,application/json" onchange="importJSON(event)" />
+          <button class="json-btn json-btn-import" style="width:100%;justify-content:center;padding:10px;" onclick="document.getElementById('json-file-input').click()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M7 9V1M4 4l3-3 3 3M2 10v1a1 1 0 001 1h8a1 1 0 001-1v-1" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Upload shop-data.json
+          </button>
+        </div>
+
+        <span class="section-label">JSON format reference</span>
+        <div style="background:#2A2420;border-radius:10px;padding:16px 18px;overflow-x:auto;">
+          <pre style="font-size:11px;line-height:1.6;color:rgba(250,247,242,0.8);font-family:monospace;white-space:pre;">{
+  "categories": ["Pottery", "Candles"],
+  "products": [
+    {
+      "id": 1,
+      "name": "Ceramic Mug",
+      "emoji": "☕",
+      "color": "#F0D9CC",
+      "price": 34,
+      "desc": "Wheel-thrown stoneware",
+      "cat": "Pottery"
+    }
+  ]
+}</pre>
+        </div>
+
+      </div><!-- /pane-data -->
+
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Reserve / message modal -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal" style="max-width:480px;text-align:left;">
+      <div style="font-size:36px;text-align:center;margin-bottom:10px">📬</div>
+      <h2 style="text-align:center;margin-bottom:6px">Ready to reserve?</h2>
+      <p style="text-align:center;margin-bottom:20px;font-size:13px;">Copy the message below and send it to me on <strong style="color:var(--ink)">Facebook Messenger</strong>. I'll confirm availability and arrange a pickup time at my home.</p>
+
+      <!-- Generated message box -->
+      <div style="background:white;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px;position:relative;">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Your message</div>
+        <div id="reserve-message" style="font-size:13px;line-height:1.7;color:var(--ink);white-space:pre-wrap;word-break:break-word;"></div>
+      </div>
+
+      <!-- Copy button -->
+      <button id="copy-msg-btn" onclick="copyReserveMessage()" style="width:100%;background:var(--ink);color:white;border:none;padding:12px;border-radius:7px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:7px;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="4" y="4" width="8" height="9" rx="1.2" stroke="white" stroke-width="1.4"/><path d="M3 11H2a1 1 0 01-1-1V3a1 1 0 011-1h7a1 1 0 011 1v1" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Copy message
+      </button>
+
+      <!-- FB Messenger hint -->
+      <div style="background:#E8F0FE;border-radius:8px;padding:11px 14px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:20px;flex-shrink:0;">💬</span>
+        <div>
+          <div style="font-size:12px;font-weight:500;color:#1a1a3a;margin-bottom:2px;">Send via Facebook Messenger</div>
+          <div style="font-size:12px;color:#444;line-height:1.5;">Paste this message in a Messenger chat to <strong>The Craft Nook</strong>. I'll reply to confirm your items and schedule a pickup time.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;">
+        <button onclick="closeCheckout()" style="flex:1;background:none;color:var(--muted);border:1px solid var(--border);padding:10px;border-radius:7px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='var(--warm)'" onmouseout="this.style.background='none'">Keep browsing</button>
+        <button onclick="closeCheckout()" style="flex:1;background:var(--terracotta);color:white;border:none;padding:10px;border-radius:7px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;" onmouseover="this.style.background='#a85c39'" onmouseout="this.style.background='var(--terracotta)'">Done ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ─────────────────────────────────────────────────────────────
+    // Auth
+    // ─────────────────────────────────────────────────────────────
+    const ADMIN_USER = 'admin';
+    const ADMIN_PASS = 'schorn2026';
+    let isLoggedIn = false;
+
+    function openManageOrLogin() {
+      if (isLoggedIn) {
+        openManagePanel();
+      } else {
+        document.getElementById('login-user').value = '';
+        document.getElementById('login-pass').value = '';
+        document.getElementById('login-error').classList.remove('show');
+        document.getElementById('login-modal').classList.add('open');
+        setTimeout(() => document.getElementById('login-user').focus(), 80);
+      }
+    }
+
+    function submitLogin() {
+      const u = document.getElementById('login-user').value.trim();
+      const p = document.getElementById('login-pass').value;
+      if (u === ADMIN_USER && p === ADMIN_PASS) {
+        isLoggedIn = true;
+        document.getElementById('login-modal').classList.remove('open');
+        openManagePanel();
+      } else {
+        document.getElementById('login-error').classList.add('show');
+        document.getElementById('login-pass').value = '';
+        document.getElementById('login-pass').focus();
+      }
+    }
+
+    function closeLoginModal() {
+      document.getElementById('login-modal').classList.remove('open');
+    }
+
+    function logoutManage() {
+      isLoggedIn = false;
+      toggleManage();
+      showToast('Signed out of shop manager');
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Data
+    // ─────────────────────────────────────────────────────────────
+    let PRODUCTS = [
+      { id:1, name:'Hand-thrown Ceramic Mug',  emoji:'☕',  color:'#F0D9CC', price:34, desc:'Wheel-thrown stoneware with natural glaze',    cat:'Pottery'     },
+      { id:2, name:'Lavender Soy Candle',       emoji:'🕯️', color:'#EDE8F0', price:22, desc:'Hand-poured with dried lavender sprigs',        cat:'Candles'     },
+      { id:3, name:'Macramé Wall Hanging',       emoji:'🪢', color:'#F2EBE0', price:58, desc:'Natural cotton cord, boho-inspired design',     cat:'Fibre Art'   },
+      { id:4, name:'Pressed Flower Card Set',   emoji:'🌸', color:'#F8E8D4', price:18, desc:'Set of 6 cards with real dried flowers',         cat:'Paper'       },
+      { id:5, name:'Beaded Bracelet',            emoji:'💎', color:'#D8EAE0', price:26, desc:'Freshwater pearl and gemstone beads',            cat:'Jewellery'   },
+      { id:6, name:'Knitted Alpaca Scarf',       emoji:'🧣', color:'#F0D9CC', price:72, desc:'100% baby alpaca in natural undyed tones',       cat:'Knitting'    },
+      { id:7, name:'Watercolour Print',          emoji:'🎨', color:'#EDE8F0', price:44, desc:'A4 archival print of original painting',         cat:'Art'         },
+      { id:8, name:'Herb Starter Kit',           emoji:'🌿', color:'#D8EAE0', price:38, desc:'3 hand-thrown pots with organic soil mixes',     cat:'Pottery'     },
+      { id:9, name:'Hand-carved Wooden Bowl',   emoji:'🪵', color:'#E8DDD0', price:65, desc:'Turned from locally sourced walnut wood',        cat:'Woodworking' },
+    ];
+
+    let CATEGORIES = ['Pottery','Candles','Fibre Art','Paper','Jewellery','Knitting','Art','Woodworking'];
+    let nextId = 10;
+    let cart = {};
+    let activecat = 'All';
+
+    // ─────────────────────────────────────────────────────────────
+    // JSON export / import
+    // ─────────────────────────────────────────────────────────────
+    function exportJSON() {
+      const data = { categories: CATEGORIES, products: PRODUCTS };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href = url; a.download = 'shop-data.json'; a.click();
+      URL.revokeObjectURL(url);
+      showToast('✅ shop-data.json downloaded');
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (!Array.isArray(data.categories) || !Array.isArray(data.products)) {
+            throw new Error('Invalid format');
+          }
+          // Validate each product has required fields
+          data.products.forEach(p => {
+            if (!p.name || !p.cat || !p.price) throw new Error('Missing product fields');
+          });
+          if (!confirm(`Import will replace all current data with ${data.categories.length} categories and ${data.products.length} products. Continue?`)) return;
+          CATEGORIES = data.categories;
+          PRODUCTS   = data.products.map(p => ({
+            id:    p.id    || nextId++,
+            name:  p.name,
+            emoji: p.emoji || '📦',
+            color: p.color || '#F0D9CC',
+            price: Number(p.price),
+            desc:  p.desc  || '',
+            cat:   p.cat,
+          }));
+          nextId = Math.max(...PRODUCTS.map(p => p.id), nextId) + 1;
+          cart = {};
+          activecat = 'All';
+          updateCartUI();
+          renderCats();
+          renderProducts();
+          renderManageCats();
+          renderManageProds();
+          refreshCatSelect();
+          showToast(`✅ Imported ${data.products.length} products successfully`);
+        } catch (err) {
+          showToast('❌ Invalid JSON file — check the format');
+        }
+        event.target.value = ''; // reset so same file can be re-imported
+      };
+      reader.readAsText(file);
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Shop rendering
+    // ─────────────────────────────────────────────────────────────
+    function renderCats() {
+      document.getElementById('categories').innerHTML = ['All', ...CATEGORIES]
+        .map(c => `<button class="cat-pill${c===activecat?' active':''}" onclick="setcat('${c}')">${c}</button>`)
+        .join('');
+    }
+
+    function setcat(c) { activecat = c; renderCats(); renderProducts(); }
+
+    function renderProducts() {
+      const list = activecat==='All' ? PRODUCTS : PRODUCTS.filter(p => p.cat===activecat);
+      if (!list.length) {
+        document.getElementById('products').innerHTML = '<div class="empty-state">No products in this category yet.</div>';
+        return;
+      }
+      document.getElementById('products').innerHTML = list.map(p => `
+        <div class="product-card">
+          <div class="product-img" style="background:${p.color};padding:0;overflow:hidden;">
+            ${p.image ? `<img src="${p.image}" style="width:100%;height:100%;object-fit:cover;" />` : `<span style="font-size:52px">${p.emoji||'📦'}</span>`}
+          </div>
+          <div class="product-info">
+            <div class="product-tag">${p.cat}</div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-desc">${p.desc}</div>
+            <div class="product-footer">
+              <div class="product-price">$${p.price}</div>
+              <button class="add-btn" onclick="addToCart(${p.id})" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Cart
+    // ─────────────────────────────────────────────────────────────
+    function addToCart(id) {
+      const p = PRODUCTS.find(x => x.id===id);
+      if (!cart[id]) cart[id] = { product:p, qty:0 };
+      cart[id].qty++;
+      updateCartUI();
+      showToast(`${p.emoji} ${p.name} added to cart`);
+    }
+    function changeQty(id, delta) {
+      if (!cart[id]) return;
+      cart[id].qty += delta;
+      if (cart[id].qty <= 0) delete cart[id];
+      updateCartUI();
+    }
+    function removeItem(id) { delete cart[id]; updateCartUI(); }
+
+    function updateCartUI() {
+      const items = Object.values(cart);
+      const total = items.reduce((s,i) => s + i.product.price * i.qty, 0);
+      const count = items.reduce((s,i) => s + i.qty, 0);
+      document.getElementById('cart-count').textContent = count;
+      const el = document.getElementById('cart-items');
+      if (!items.length) {
+        el.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+        document.getElementById('cart-footer').style.display = 'none';
+        return;
+      }
+      el.innerHTML = items.map(({product:p, qty}) => `
+        <div class="cart-item">
+          <div class="cart-item-icon" style="background:${p.color};overflow:hidden;">
+            ${p.image ? `<img src="${p.image}" style="width:100%;height:100%;object-fit:cover;" />` : `<span style="font-size:22px">${p.emoji||'📦'}</span>`}
+          </div>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${p.name}</div>
+            <div class="cart-item-price">$${p.price}</div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty(${p.id},-1)">−</button>
+              <span class="qty-num">${qty}</span>
+              <button class="qty-btn" onclick="changeQty(${p.id},1)">+</button>
+            </div>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${p.id})" title="Remove">✕</button>
+        </div>`).join('');
+      document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+      document.getElementById('cart-footer').style.display = 'block';
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Manage — categories
+    // ─────────────────────────────────────────────────────────────
+    function renderManageCats() {
+      const el = document.getElementById('cat-list');
+      if (!CATEGORIES.length) {
+        el.innerHTML = '<p style="font-size:13px;color:var(--muted);padding:4px 0">No categories yet.</p>';
+      } else {
+        el.innerHTML = CATEGORIES.map((c, i) => {
+          const count = PRODUCTS.filter(p => p.cat===c).length;
+          return `<div class="cat-row">
+            <span class="cat-row-name">${c}</span>
+            <span class="cat-row-count">${count} product${count!==1?'s':''}</span>
+            <button class="cat-del-btn" onclick="deleteCategory(${i})" title="Remove category">✕</button>
+          </div>`;
+        }).join('');
+      }
+      refreshCatSelect();
+    }
+
+    function addCategory() {
+      const input = document.getElementById('new-cat-input');
+      const name = input.value.trim();
+      if (!name) return;
+      if (CATEGORIES.includes(name)) { showToast('Category already exists'); return; }
+      CATEGORIES.push(name);
+      input.value = '';
+      renderManageCats();
+      renderCats();
+      showToast(`✅ "${name}" added`);
+    }
+
+    function deleteCategory(idx) {
+      const name = CATEGORIES[idx];
+      if (!name) return;
+      const count = PRODUCTS.filter(p => p.cat===name).length;
+      if (count > 0 && !confirm(`"${name}" has ${count} product(s). Deleting it will also remove those products. Continue?`)) return;
+      PRODUCTS = PRODUCTS.filter(p => p.cat!==name);
+      Object.keys(cart).forEach(id => { if (cart[id].product.cat===name) delete cart[id]; });
+      CATEGORIES = CATEGORIES.filter(c => c!==name);
+      if (activecat===name) activecat='All';
+      updateCartUI();
+      renderManageCats();
+      renderManageProds();
+      renderCats();
+      renderProducts();
+      showToast(`"${name}" removed`);
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Manage — products
+    // ─────────────────────────────────────────────────────────────
+    function renderManageProds() {
+      const el = document.getElementById('prod-list');
+      if (!PRODUCTS.length) {
+        el.innerHTML = '<p style="font-size:13px;color:var(--muted);padding:4px 0">No products yet.</p>';
+      } else {
+        el.innerHTML = PRODUCTS.map(p => `
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:${p.color};width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById('img-upload-${p.id}').click()" title="Click to change image">
+              ${p.image ? `<img src="${p.image}" style="width:100%;height:100%;object-fit:cover;" />` : `<span style="font-size:20px">${p.emoji||'📦'}</span>`}
+              <input type="file" id="img-upload-${p.id}" accept="image/*" style="display:none" onchange="updateProductImage(${p.id}, event)" />
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">${p.name}</div>
+              <div class="prod-row-meta">${p.cat} · $${p.price}</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(${p.id})" title="Remove">✕</button>
+          </div>`).join('');
+      }
+    }
+
+    function refreshCatSelect() {
+      const sel = document.getElementById('f-cat');
+      const prev = sel.value;
+      sel.innerHTML = CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('');
+      if (CATEGORIES.includes(prev)) sel.value = prev;
+    }
+
+    let pendingNewImage = null;
+
+    function previewNewImage(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        pendingNewImage = e.target.result;
+        const preview = document.getElementById('f-img-preview');
+        preview.innerHTML = `<img src="${pendingNewImage}" style="width:100%;height:100%;object-fit:cover;" />`;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updateProductImage(id, event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const p = PRODUCTS.find(x => x.id === id);
+        if (p) {
+          p.image = e.target.result;
+          renderManageProds();
+          renderProducts();
+          showToast('📷 Image updated');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function addProduct() {
+      const name  = document.getElementById('f-name').value.trim();
+      const desc  = document.getElementById('f-desc').value.trim();
+      const cat   = document.getElementById('f-cat').value;
+      const price = parseFloat(document.getElementById('f-price').value);
+      const color = document.getElementById('f-color').value;
+      if (!name)           { showToast('Please enter a product name'); return; }
+      if (!desc)           { showToast('Please enter a description'); return; }
+      if (!cat)            { showToast('Please select a category'); return; }
+      if (!price || price < 1) { showToast('Please enter a valid price'); return; }
+      PRODUCTS.push({ id:nextId++, name, emoji:'📦', image: pendingNewImage||null, color, price:Math.round(price), desc, cat });
+      document.getElementById('f-name').value  = '';
+      document.getElementById('f-desc').value  = '';
+      document.getElementById('f-price').value = '';
+      document.getElementById('f-img-input').value = '';
+      document.getElementById('f-img-preview').innerHTML = 'Upload';
+      pendingNewImage = null;
+      renderManageProds();
+      renderProducts();
+      showToast(`"${name}" added to shop`);
+    }
+
+    function deleteProduct(id) {
+      PRODUCTS = PRODUCTS.filter(p => p.id!==id);
+      delete cart[id];
+      updateCartUI();
+      renderManageProds();
+      renderManageCats();
+      renderProducts();
+      showToast('Product removed');
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Panel toggles
+    // ─────────────────────────────────────────────────────────────
+    let manageOpen = false;
+    let cartOpen   = false;
+
+    function openManagePanel() {
+      manageOpen = true;
+      if (cartOpen) { cartOpen=false; document.getElementById('cart-panel').classList.remove('open'); }
+      renderManageCats();
+      renderManageProds();
+      refreshCatSelect();
+      document.getElementById('manage-panel').classList.add('open');
+      document.getElementById('overlay').classList.add('show');
+    }
+
+    function toggleManage() {
+      manageOpen = !manageOpen;
+      if (manageOpen) openManagePanel();
+      else {
+        document.getElementById('manage-panel').classList.remove('open');
+        document.getElementById('overlay').classList.toggle('show', cartOpen);
+      }
+    }
+
+    function toggleCart() {
+      cartOpen = !cartOpen;
+      if (cartOpen && manageOpen) { manageOpen=false; document.getElementById('manage-panel').classList.remove('open'); }
+      document.getElementById('cart-panel').classList.toggle('open', cartOpen);
+      document.getElementById('overlay').classList.toggle('show', manageOpen || cartOpen);
+    }
+
+    document.getElementById('overlay').addEventListener('click', () => {
+      if (cartOpen)   toggleCart();
+      if (manageOpen) toggleManage();
+    });
+
+    // ─────────────────────────────────────────────────────────────
+    // Tabs
+    // ─────────────────────────────────────────────────────────────
+    function switchTab(tab) {
+      ['cats','prods','data'].forEach(t => {
+        document.getElementById('pane-'+t).style.display = t===tab ? '' : 'none';
+        document.getElementById('tab-'+t).classList.toggle('active', t===tab);
+      });
+      if (tab === 'prods') refreshCatSelect();
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Toast
+    // ─────────────────────────────────────────────────────────────
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2600);
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Checkout
+    // ─────────────────────────────────────────────────────────────
+    function checkout() {
+      const items = Object.values(cart);
+      const total = items.reduce((s,i) => s + i.product.price * i.qty, 0);
+      const itemLines = items.map(({product:p, qty}) =>
+        `  • ${p.name}${qty > 1 ? ` (x${qty})` : ''} — $${(p.price * qty).toFixed(2)}`
+      ).join('\n');
+      const msg =
+`Hi! I'm interested in reserving the following items from The Craft Nook:\n\n${itemLines}\n\nTotal: $${total.toFixed(2)}\n\nCould you confirm these are available and let me know a good time for pickup? Thank you! 😊`;
+      document.getElementById('reserve-message').textContent = msg;
+      document.getElementById('copy-msg-btn').textContent = '  Copy message';
+      document.getElementById('copy-msg-btn').innerHTML = `<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="4" y="4" width="8" height="9" rx="1.2" stroke="white" stroke-width="1.4"/><path d="M3 11H2a1 1 0 01-1-1V3a1 1 0 011-1h7a1 1 0 011 1v1" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg> Copy message`;
+      document.getElementById('checkout-modal').classList.add('open');
+    }
+
+    function copyReserveMessage() {
+      const msg = document.getElementById('reserve-message').textContent;
+      navigator.clipboard.writeText(msg).then(() => {
+        const btn = document.getElementById('copy-msg-btn');
+        btn.innerHTML = `✅ Copied!`;
+        btn.style.background = '#2e7d4f';
+        setTimeout(() => {
+          btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="4" y="4" width="8" height="9" rx="1.2" stroke="white" stroke-width="1.4"/><path d="M3 11H2a1 1 0 01-1-1V3a1 1 0 011-1h7a1 1 0 011 1v1" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg> Copy message`;
+          btn.style.background = 'var(--ink)';
+        }, 2200);
+      }).catch(() => {
+        showToast('Could not copy — please copy manually');
+      });
+    }
+
+    function closeCheckout() {
+      cart = {};
+      updateCartUI();
+      document.getElementById('checkout-modal').classList.remove('open');
+      cartOpen = false;
+      document.getElementById('cart-panel').classList.remove('open');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Init
+    // ─────────────────────────────────────────────────────────────
+    renderCats();
+    renderProducts();
+  </script>
+</body>
+</html>
