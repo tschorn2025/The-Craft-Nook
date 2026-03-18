@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- saved from url=(0041)file:///home/tschorn/Downloads/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Craft Nook — Handmade Goods</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./index1_files/css2" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -227,17 +227,17 @@
   <header class="header">
     <div class="logo">The Craft Nook <span>HANDMADE GOODS</span></div>
     <nav class="nav">
-      <a href="#shop">Shop</a>
-      <a href="#features">About</a>
-      <a href="#shop">Custom Orders</a>
+      <a href="file:///home/tschorn/Downloads/index.html#shop">Shop</a>
+      <a href="file:///home/tschorn/Downloads/index.html#features">About</a>
+      <a href="file:///home/tschorn/Downloads/index.html#shop">Custom Orders</a>
     </nav>
     <div class="header-right">
       <button class="manage-btn" onclick="openManageOrLogin()">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 4h12M1 7h12M1 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 4h12M1 7h12M1 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path></svg>
         Manage Shop
       </button>
       <button class="cart-btn" onclick="toggleCart()">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2h2l2 8h6l1.5-5H5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="13" r="1" fill="white"/><circle cx="12" cy="13" r="1" fill="white"/></svg>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2h2l2 8h6l1.5-5H5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="7" cy="13" r="1" fill="white"></circle><circle cx="12" cy="13" r="1" fill="white"></circle></svg>
         Cart <span class="cart-badge" id="cart-count">0</span>
       </button>
     </div>
@@ -248,7 +248,7 @@
       <p class="hero-eyebrow">New arrivals · Spring 2026</p>
       <h1>Crafted by hand,<br>made with heart</h1>
       <p>Every piece is individually made using traditional techniques and sustainable materials. Find something truly one of a kind.</p>
-      <button class="hero-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Browse the shop</button>
+      <button class="hero-cta" onclick="document.getElementById(&#39;shop&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">Browse the shop</button>
     </div>
     <div class="hero-decor">
       <div class="decor-block">🧶</div>
@@ -260,11 +260,235 @@
 
   <section class="section" id="shop">
     <div class="section-header"><h2>Our Collection</h2></div>
-    <div class="categories" id="categories"></div>
-    <div class="products"   id="products"></div>
+    <div class="categories" id="categories"><button class="cat-pill active" onclick="setcat(&#39;All&#39;)">All</button><button class="cat-pill" onclick="setcat(&#39;Candles&#39;)">Candles</button><button class="cat-pill" onclick="setcat(&#39;Fibre Art&#39;)">Fibre Art</button><button class="cat-pill" onclick="setcat(&#39;Paper&#39;)">Paper</button><button class="cat-pill" onclick="setcat(&#39;Knitting&#39;)">Knitting</button><button class="cat-pill" onclick="setcat(&#39;Art&#39;)">Art</button><button class="cat-pill" onclick="setcat(&#39;Woodworking&#39;)">Woodworking</button></div>
+    <div class="products" id="products">
+        <div class="product-card">
+          <div class="product-img" style="background:#EDE8F0;padding:0;overflow:hidden;">
+            <span style="font-size:52px">🕯️</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Candles</div>
+            <div class="product-name">Lavender Soy Candle</div>
+            <div class="product-desc">Hand-poured with dried lavender sprigs</div>
+            <div class="product-footer">
+              <div class="product-price">$22</div>
+              <button class="add-btn" onclick="addToCart(2)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#F8E8D4;padding:0;overflow:hidden;">
+            <span style="font-size:52px">🌸</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Paper</div>
+            <div class="product-name">Pressed Flower Card Set</div>
+            <div class="product-desc">Set of 6 cards with real dried flowers</div>
+            <div class="product-footer">
+              <div class="product-price">$18</div>
+              <button class="add-btn" onclick="addToCart(4)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#E8DDD0;padding:0;overflow:hidden;">
+            <span style="font-size:52px">🪵</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Hand-carved Wooden Bowl</div>
+            <div class="product-desc">Turned from locally sourced walnut wood</div>
+            <div class="product-footer">
+              <div class="product-price">$65</div>
+              <button class="add-btn" onclick="addToCart(9)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Candles</div>
+            <div class="product-name">Hand-Carved Wooden Candle Holder</div>
+            <div class="product-desc">Holds 3" Candle</div>
+            <div class="product-footer">
+              <div class="product-price">$15</div>
+              <button class="add-btn" onclick="addToCart(10)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Candles</div>
+            <div class="product-name">Short Hand-Carved Wooden Candle Holder</div>
+            <div class="product-desc">2-1/2" Candle</div>
+            <div class="product-footer">
+              <div class="product-price">$15</div>
+              <button class="add-btn" onclick="addToCart(11)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Small Hand-Carved Wooden Mushroom</div>
+            <div class="product-desc">2" Wooden Mushroom</div>
+            <div class="product-footer">
+              <div class="product-price">$5</div>
+              <button class="add-btn" onclick="addToCart(12)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Shallow Hand-Carved Wooden Bowl</div>
+            <div class="product-desc">5" Bowl</div>
+            <div class="product-footer">
+              <div class="product-price">$20</div>
+              <button class="add-btn" onclick="addToCart(13)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Medium Hand-Carved Wooden Box</div>
+            <div class="product-desc">3" Jewelry Box with fitted lid.</div>
+            <div class="product-footer">
+              <div class="product-price">$20</div>
+              <button class="add-btn" onclick="addToCart(14)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Large Hand-Carved Wooden Box</div>
+            <div class="product-desc">5" Jewelry Box with fitted lid</div>
+            <div class="product-footer">
+              <div class="product-price">$25</div>
+              <button class="add-btn" onclick="addToCart(15)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Small Hand-Carved Wooden Box</div>
+            <div class="product-desc">2" Jewelry Box with lidded cover</div>
+            <div class="product-footer">
+              <div class="product-price">$15</div>
+              <button class="add-btn" onclick="addToCart(16)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Large Hand-Carved Mushroom</div>
+            <div class="product-desc">5" Tall wooden mushroom rough</div>
+            <div class="product-footer">
+              <div class="product-price">$15</div>
+              <button class="add-btn" onclick="addToCart(17)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Hand-Carved Wooden Tea Candle Holder rough</div>
+            <div class="product-desc">Natural edge Wooden tea candle holder with candle</div>
+            <div class="product-footer">
+              <div class="product-price">$10</div>
+              <button class="add-btn" onclick="addToCart(18)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Hand-Carved Wooden Weed Pot</div>
+            <div class="product-desc">5" tall wooden vase for dried flower etc.</div>
+            <div class="product-footer">
+              <div class="product-price">$15</div>
+              <button class="add-btn" onclick="addToCart(19)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Hand-Carved Wooden Challis</div>
+            <div class="product-desc">5" Tall wooden challis rough</div>
+            <div class="product-footer">
+              <div class="product-price">$20</div>
+              <button class="add-btn" onclick="addToCart(20)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Hand-Carved Sphere</div>
+            <div class="product-desc">3" diameter sphere, custom order</div>
+            <div class="product-footer">
+              <div class="product-price">$15</div>
+              <button class="add-btn" onclick="addToCart(21)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img" style="background:#f0d9cc;padding:0;overflow:hidden;">
+            <span style="font-size:52px">📦</span>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Woodworking</div>
+            <div class="product-name">Hand-Carved Season Items</div>
+            <div class="product-desc">Custom Order Seasonal Items</div>
+            <div class="product-footer">
+              <div class="product-price">$20</div>
+              <button class="add-btn" onclick="addToCart(22)" title="Add to cart">+</button>
+            </div>
+          </div>
+        </div></div>
   </section>
 
-  <hr class="divider" />
+  <hr class="divider">
 
   <div class="features" id="features">
     <div class="feature">
@@ -312,13 +536,11 @@
       <div class="login-error" id="login-error">Incorrect username or password. Please try again.</div>
       <div class="login-field">
         <label>Username</label>
-        <input type="text" id="login-user" placeholder="admin" autocomplete="username"
-               onkeydown="if(event.key==='Enter')document.getElementById('login-pass').focus()" />
+        <input type="text" id="login-user" placeholder="admin" autocomplete="username" onkeydown="if(event.key===&#39;Enter&#39;)document.getElementById(&#39;login-pass&#39;).focus()">
       </div>
       <div class="login-field">
         <label>Password</label>
-        <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password"
-               onkeydown="if(event.key==='Enter')submitLogin()" />
+        <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key===&#39;Enter&#39;)submitLogin()">
       </div>
       <button class="login-submit" onclick="submitLogin()">Sign in</button>
       <button class="login-cancel" onclick="closeLoginModal()">Cancel</button>
@@ -335,20 +557,43 @@
       </div>
     </div>
     <div class="manage-tabs">
-      <button class="manage-tab active" id="tab-cats"  onclick="switchTab('cats')">Categories</button>
-      <button class="manage-tab"        id="tab-prods" onclick="switchTab('prods')">Products</button>
-      <button class="manage-tab"        id="tab-data"  onclick="switchTab('data')">Data</button>
+      <button class="manage-tab" id="tab-cats" onclick="switchTab(&#39;cats&#39;)">Categories</button>
+      <button class="manage-tab" id="tab-prods" onclick="switchTab(&#39;prods&#39;)">Products</button>
+      <button class="manage-tab active" id="tab-data" onclick="switchTab(&#39;data&#39;)">Data</button>
     </div>
     <div class="manage-body">
 
       <!-- Categories pane -->
-      <div id="pane-cats">
+      <div id="pane-cats" style="display: none;">
         <span class="section-label">Active categories</span>
-        <div class="cat-list" id="cat-list"></div>
+        <div class="cat-list" id="cat-list"><div class="cat-row">
+            <span class="cat-row-name">Candles</span>
+            <span class="cat-row-count">3 products</span>
+            <button class="cat-del-btn" onclick="deleteCategory(0)" title="Remove category">✕</button>
+          </div><div class="cat-row">
+            <span class="cat-row-name">Fibre Art</span>
+            <span class="cat-row-count">0 products</span>
+            <button class="cat-del-btn" onclick="deleteCategory(1)" title="Remove category">✕</button>
+          </div><div class="cat-row">
+            <span class="cat-row-name">Paper</span>
+            <span class="cat-row-count">1 product</span>
+            <button class="cat-del-btn" onclick="deleteCategory(2)" title="Remove category">✕</button>
+          </div><div class="cat-row">
+            <span class="cat-row-name">Knitting</span>
+            <span class="cat-row-count">0 products</span>
+            <button class="cat-del-btn" onclick="deleteCategory(3)" title="Remove category">✕</button>
+          </div><div class="cat-row">
+            <span class="cat-row-name">Art</span>
+            <span class="cat-row-count">0 products</span>
+            <button class="cat-del-btn" onclick="deleteCategory(4)" title="Remove category">✕</button>
+          </div><div class="cat-row">
+            <span class="cat-row-name">Woodworking</span>
+            <span class="cat-row-count">12 products</span>
+            <button class="cat-del-btn" onclick="deleteCategory(5)" title="Remove category">✕</button>
+          </div></div>
         <span class="section-label">Add a new category</span>
         <div class="add-cat-row">
-          <input type="text" id="new-cat-input" placeholder="e.g. Woodworking" maxlength="32"
-                 onkeydown="if(event.key==='Enter')addCategory()" />
+          <input type="text" id="new-cat-input" placeholder="e.g. Woodworking" maxlength="32" onkeydown="if(event.key===&#39;Enter&#39;)addCategory()">
           <button onclick="addCategory()">Add category</button>
         </div>
       </div>
@@ -356,38 +601,214 @@
       <!-- Products pane -->
       <div id="pane-prods" style="display:none">
         <span class="section-label">Current products</span>
-        <div class="prod-list" id="prod-list"></div>
+        <div class="prod-list" id="prod-list">
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#EDE8F0;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-2&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">🕯️</span>
+              <input type="file" id="img-upload-2" accept="image/*" style="display:none" onchange="updateProductImage(2, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Lavender Soy Candle</div>
+              <div class="prod-row-meta">Candles · $22</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(2)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#F8E8D4;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-4&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">🌸</span>
+              <input type="file" id="img-upload-4" accept="image/*" style="display:none" onchange="updateProductImage(4, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Pressed Flower Card Set</div>
+              <div class="prod-row-meta">Paper · $18</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(4)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#E8DDD0;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-9&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">🪵</span>
+              <input type="file" id="img-upload-9" accept="image/*" style="display:none" onchange="updateProductImage(9, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Hand-carved Wooden Bowl</div>
+              <div class="prod-row-meta">Woodworking · $65</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(9)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-10&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-10" accept="image/*" style="display:none" onchange="updateProductImage(10, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Hand-Carved Wooden Candle Holder</div>
+              <div class="prod-row-meta">Candles · $15</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(10)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-11&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-11" accept="image/*" style="display:none" onchange="updateProductImage(11, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Short Hand-Carved Wooden Candle Holder</div>
+              <div class="prod-row-meta">Candles · $15</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(11)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-12&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-12" accept="image/*" style="display:none" onchange="updateProductImage(12, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Small Hand-Carved Wooden Mushroom</div>
+              <div class="prod-row-meta">Woodworking · $5</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(12)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-13&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-13" accept="image/*" style="display:none" onchange="updateProductImage(13, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Shallow Hand-Carved Wooden Bowl</div>
+              <div class="prod-row-meta">Woodworking · $20</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(13)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-14&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-14" accept="image/*" style="display:none" onchange="updateProductImage(14, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Medium Hand-Carved Wooden Box</div>
+              <div class="prod-row-meta">Woodworking · $20</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(14)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-15&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-15" accept="image/*" style="display:none" onchange="updateProductImage(15, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Large Hand-Carved Wooden Box</div>
+              <div class="prod-row-meta">Woodworking · $25</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(15)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-16&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-16" accept="image/*" style="display:none" onchange="updateProductImage(16, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Small Hand-Carved Wooden Box</div>
+              <div class="prod-row-meta">Woodworking · $15</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(16)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-17&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-17" accept="image/*" style="display:none" onchange="updateProductImage(17, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Large Hand-Carved Mushroom</div>
+              <div class="prod-row-meta">Woodworking · $15</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(17)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-18&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-18" accept="image/*" style="display:none" onchange="updateProductImage(18, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Hand-Carved Wooden Tea Candle Holder rough</div>
+              <div class="prod-row-meta">Woodworking · $10</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(18)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-19&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-19" accept="image/*" style="display:none" onchange="updateProductImage(19, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Hand-Carved Wooden Weed Pot</div>
+              <div class="prod-row-meta">Woodworking · $15</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(19)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-20&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-20" accept="image/*" style="display:none" onchange="updateProductImage(20, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Hand-Carved Wooden Challis</div>
+              <div class="prod-row-meta">Woodworking · $20</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(20)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-21&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-21" accept="image/*" style="display:none" onchange="updateProductImage(21, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Hand-Carved Sphere</div>
+              <div class="prod-row-meta">Woodworking · $15</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(21)" title="Remove">✕</button>
+          </div>
+          <div class="prod-row">
+            <div class="prod-row-img" style="background:#f0d9cc;width:36px;height:36px;border-radius:6px;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById(&#39;img-upload-22&#39;).click()" title="Click to change image">
+              <span style="font-size:20px">📦</span>
+              <input type="file" id="img-upload-22" accept="image/*" style="display:none" onchange="updateProductImage(22, event)">
+            </div>
+            <div class="prod-row-info">
+              <div class="prod-row-name">Hand-Carved Season Items</div>
+              <div class="prod-row-meta">Woodworking · $20</div>
+            </div>
+            <button class="prod-del-btn" onclick="deleteProduct(22)" title="Remove">✕</button>
+          </div></div>
         <div class="add-prod-form">
           <h3>Add a new product</h3>
           <div class="form-row">
             <div class="form-field" style="flex:2">
               <label>Product name</label>
-              <input type="text" id="f-name" placeholder="Hand-carved wooden bowl" maxlength="48" />
+              <input type="text" id="f-name" placeholder="Hand-carved wooden bowl" maxlength="48">
             </div>
             <div class="form-field" style="flex:0 0 90px">
               <label>Image</label>
-              <div id="f-img-preview" onclick="document.getElementById('f-img-input').click()" style="height:36px;border:1px dashed var(--border);border-radius:6px;background:var(--cream);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);overflow:hidden;">Upload</div>
-              <input type="file" id="f-img-input" accept="image/*" style="display:none" onchange="previewNewImage(event)" />
+              <div id="f-img-preview" onclick="document.getElementById(&#39;f-img-input&#39;).click()" style="height:36px;border:1px dashed var(--border);border-radius:6px;background:var(--cream);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);overflow:hidden;">Upload</div>
+              <input type="file" id="f-img-input" accept="image/*" style="display:none" onchange="previewNewImage(event)">
             </div>
           </div>
           <div class="form-row">
             <div class="form-field">
               <label>Description</label>
-              <input type="text" id="f-desc" placeholder="Short description…" maxlength="64" />
+              <input type="text" id="f-desc" placeholder="Short description…" maxlength="64">
             </div>
           </div>
           <div class="form-row">
             <div class="form-field">
               <label>Category</label>
-              <select id="f-cat"></select>
+              <select id="f-cat"><option value="Candles">Candles</option><option value="Fibre Art">Fibre Art</option><option value="Paper">Paper</option><option value="Knitting">Knitting</option><option value="Art">Art</option><option value="Woodworking">Woodworking</option></select>
             </div>
             <div class="form-field" style="flex:0 0 90px">
               <label>Price ($)</label>
-              <input type="number" id="f-price" placeholder="0" min="1" max="9999" />
+              <input type="number" id="f-price" placeholder="0" min="1" max="9999">
             </div>
             <div class="form-field" style="flex:0 0 70px">
               <label>Card color</label>
-              <input type="color" id="f-color" value="#F0D9CC" style="height:36px;padding:2px 4px;cursor:pointer;" />
+              <input type="color" id="f-color" value="#F0D9CC" style="height:36px;padding:2px 4px;cursor:pointer;">
             </div>
           </div>
           <button class="form-submit" onclick="addProduct()">Add product to shop</button>
@@ -395,7 +816,7 @@
       </div>
 
       <!-- Data pane -->
-      <div id="pane-data" style="display:none">
+      <div id="pane-data" style="">
 
         <span class="section-label">Export data</span>
         <div style="background:white;border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:24px;">
@@ -403,7 +824,7 @@
             Download a <strong style="font-weight:500;color:var(--ink)">shop-data.json</strong> file containing all your current categories and products. Keep it as a backup or edit it externally and re-upload.
           </p>
           <button class="json-btn json-btn-export" style="width:100%;justify-content:center;padding:10px;" onclick="exportJSON()">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M7 1v8M4 6l3 3 3-3M2 10v1a1 1 0 001 1h8a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M7 1v8M4 6l3 3 3-3M2 10v1a1 1 0 001 1h8a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             Download shop-data.json
           </button>
         </div>
@@ -413,9 +834,9 @@
           <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;font-weight:300;">
             Upload a previously exported <strong style="font-weight:500;color:var(--ink)">shop-data.json</strong> to replace all current categories and products. This cannot be undone.
           </p>
-          <input type="file" id="json-file-input" accept=".json,application/json" onchange="importJSON(event)" />
-          <button class="json-btn json-btn-import" style="width:100%;justify-content:center;padding:10px;" onclick="document.getElementById('json-file-input').click()">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M7 9V1M4 4l3-3 3 3M2 10v1a1 1 0 001 1h8a1 1 0 001-1v-1" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <input type="file" id="json-file-input" accept=".json,application/json" onchange="importJSON(event)">
+          <button class="json-btn json-btn-import" style="width:100%;justify-content:center;padding:10px;" onclick="document.getElementById(&#39;json-file-input&#39;).click()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M7 9V1M4 4l3-3 3 3M2 10v1a1 1 0 001 1h8a1 1 0 001-1v-1" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             Upload shop-data.json
           </button>
         </div>
@@ -444,7 +865,7 @@
   </div>
 
   <!-- Toast -->
-  <div class="toast" id="toast"></div>
+  <div class="toast" id="toast">Signed out of shop manager</div>
 
   <!-- Reserve / message modal -->
   <div class="modal-overlay" id="checkout-modal">
@@ -460,14 +881,14 @@
       </div>
 
       <!-- Copy button -->
-      <button id="copy-msg-btn" onclick="copyReserveMessage()" style="width:100%;background:var(--ink);color:white;border:none;padding:12px;border-radius:7px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:7px;">
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="4" y="4" width="8" height="9" rx="1.2" stroke="white" stroke-width="1.4"/><path d="M3 11H2a1 1 0 01-1-1V3a1 1 0 011-1h7a1 1 0 011 1v1" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <button id="copy-msg-btn" onclick="copyReserveMessage()" style="width:100%;background:var(--ink);color:white;border:none;padding:12px;border-radius:7px;font-size:14px;cursor:pointer;font-family:&#39;DM Sans&#39;,sans-serif;margin-bottom:10px;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:7px;">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="4" y="4" width="8" height="9" rx="1.2" stroke="white" stroke-width="1.4"></rect><path d="M3 11H2a1 1 0 01-1-1V3a1 1 0 011-1h7a1 1 0 011 1v1" stroke="white" stroke-width="1.4" stroke-linecap="round"></path></svg>
         Copy message
       </button>
 
       <!-- Open in Messenger button -->
-      <button id="open-messenger-btn" onclick="openInMessenger()" style="width:100%;background:#0099FF;color:white;border:none;padding:12px;border-radius:7px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;" onmouseover="this.style.background='#007acc'" onmouseout="this.style.background='#0099FF'">
-        <svg width="17" height="17" viewBox="0 0 36 36" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M18 1C8.6 1 1 8.1 1 16.9c0 4.9 2.4 9.3 6.2 12.2V34l5.6-3.1c1.5.4 3.1.6 4.8.6 9.4 0 17-7.1 17-15.9S27.4 1 18 1zm1.7 21.4l-4.3-4.6-8.4 4.6 9.2-9.8 4.4 4.6 8.3-4.6-9.2 9.8z"/></svg>
+      <button id="open-messenger-btn" onclick="openInMessenger()" style="width:100%;background:#0099FF;color:white;border:none;padding:12px;border-radius:7px;font-size:14px;cursor:pointer;font-family:&#39;DM Sans&#39;,sans-serif;margin-bottom:10px;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;" onmouseover="this.style.background=&#39;#007acc&#39;" onmouseout="this.style.background=&#39;#0099FF&#39;">
+        <svg width="17" height="17" viewBox="0 0 36 36" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M18 1C8.6 1 1 8.1 1 16.9c0 4.9 2.4 9.3 6.2 12.2V34l5.6-3.1c1.5.4 3.1.6 4.8.6 9.4 0 17-7.1 17-15.9S27.4 1 18 1zm1.7 21.4l-4.3-4.6-8.4 4.6 9.2-9.8 4.4 4.6 8.3-4.6-9.2 9.8z"></path></svg>
         Open in Messenger
       </button>
 
@@ -481,8 +902,8 @@
       </div>
 
       <div style="display:flex;gap:8px;">
-        <button onclick="closeCheckout()" style="flex:1;background:none;color:var(--muted);border:1px solid var(--border);padding:10px;border-radius:7px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.15s;" onmouseover="this.style.background='var(--warm)'" onmouseout="this.style.background='none'">Keep browsing</button>
-        <button onclick="closeCheckout()" style="flex:1;background:var(--terracotta);color:white;border:none;padding:10px;border-radius:7px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;" onmouseover="this.style.background='#a85c39'" onmouseout="this.style.background='var(--terracotta)'">Done ✓</button>
+        <button onclick="closeCheckout()" style="flex:1;background:none;color:var(--muted);border:1px solid var(--border);padding:10px;border-radius:7px;font-size:13px;cursor:pointer;font-family:&#39;DM Sans&#39;,sans-serif;transition:background 0.15s;" onmouseover="this.style.background=&#39;var(--warm)&#39;" onmouseout="this.style.background=&#39;none&#39;">Keep browsing</button>
+        <button onclick="closeCheckout()" style="flex:1;background:var(--terracotta);color:white;border:none;padding:10px;border-radius:7px;font-size:13px;cursor:pointer;font-family:&#39;DM Sans&#39;,sans-serif;transition:background 0.2s;" onmouseover="this.style.background=&#39;#a85c39&#39;" onmouseout="this.style.background=&#39;var(--terracotta)&#39;">Done ✓</button>
       </div>
     </div>
   </div>
@@ -943,5 +1364,6 @@
     renderCats();
     renderProducts();
   </script>
-</body>
-</html>
+
+
+</body></html>
