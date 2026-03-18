@@ -465,12 +465,18 @@
         Copy message
       </button>
 
+      <!-- Open in Messenger button -->
+      <button id="open-messenger-btn" onclick="openInMessenger()" style="width:100%;background:#0099FF;color:white;border:none;padding:12px;border-radius:7px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;" onmouseover="this.style.background='#007acc'" onmouseout="this.style.background='#0099FF'">
+        <svg width="17" height="17" viewBox="0 0 36 36" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M18 1C8.6 1 1 8.1 1 16.9c0 4.9 2.4 9.3 6.2 12.2V34l5.6-3.1c1.5.4 3.1.6 4.8.6 9.4 0 17-7.1 17-15.9S27.4 1 18 1zm1.7 21.4l-4.3-4.6-8.4 4.6 9.2-9.8 4.4 4.6 8.3-4.6-9.2 9.8z"/></svg>
+        Open in Messenger
+      </button>
+
       <!-- FB Messenger hint -->
       <div style="background:#E8F0FE;border-radius:8px;padding:11px 14px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;">
         <span style="font-size:20px;flex-shrink:0;">💬</span>
         <div>
           <div style="font-size:12px;font-weight:500;color:#1a1a3a;margin-bottom:2px;">Send via Facebook Messenger</div>
-          <div style="font-size:12px;color:#444;line-height:1.5;">Paste this message in a Messenger chat to <strong>The Craft Nook</strong>. I'll reply to confirm your items and schedule a pickup time.</div>
+          <div style="font-size:12px;color:#444;line-height:1.5;">Paste this message in a Messenger chat to <strong>Nooks Crafts</strong>. I'll reply to confirm your items and schedule a pickup time.</div>
         </div>
       </div>
 
@@ -913,6 +919,13 @@
       }).catch(() => {
         showToast('Could not copy — please copy manually');
       });
+    }
+
+    function openInMessenger() {
+      const msg = document.getElementById('reserve-message').textContent;
+      const pageUsername = 'NooksCrafts';
+      const messengerUrl = `https://m.me/${pageUsername}?text=${encodeURIComponent(msg)}`;
+      window.open(messengerUrl, '_blank');
     }
 
     function closeCheckout() {
